@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Cierramegumi</title>
+<style type='text/css'>
+body{
+	background:hsl(200,100%,84%);
+}
+#warp{
+	width:896px;background:#FFF4;text-align:center;
+	margin:0 auto;padding:20px 40px 40px 40px;
+}
+h1{
+	border-bottom:4px solid #666;
+	padding-bottom:16px;
+	font-size:60px;
+}
+p{
+	font-size:36px;
+}
+#img{
+	width:896px;height:504px;
+	background-image:url(img/1.png),url(img/2.jpg),url(img/3.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	transition:background-position 0.8s;
+	animation:roll 15s infinite;
+}
+#img:hover{
+	background-position:-896px 0,0 0;
+}
+@keyframes roll{
+	0%{background-position:0 0,896px 0,1792px 0;}
+	28%{background-position:0 0,896px 0,1792px 0;}
+	33%{background-position:-896px 0,0 0,896px 0;}
+	61%{background-position:-896px 0,0 0,896px 0;}
+	66%{background-position:-1792px 0,-896px 0,0 0;}
+	95%{background-position:-1792px 0,-896px 0,0 0;}
+	100%{background-position:0 0,896px 0,1792px 0;}
+}
+#nav{
+	position:fixed;top:80px;left:80px;
+	width:60px;height:60px;background:#FFF0;
+}
+#nav:hover{
+	height:300px;
+}
+#nav>a{
+	display:block;background:#FFF3;
+	/*border:2px solid #333;*/width:60px;height:60px;
+	text-align:center;line-height:60px;
+	text-decoration:none;color:#3330;
+	margin-bottom:-60px;border-radius:100%;
+	box-shadow:1px 1px 4px #0004;
+	transition:margin-bottom 0.8s,color 0.8s;
+}
+#nav:hover>a{
+	margin-bottom:20px;color:#333;
+}
+</style>
+</head>
+<body>
+	<div id='warp'>
+		<h1>Cierramegumi's Website</h1>
+		<p>This is a normal website.</p>
+		<div id='img'></div>
+	</div>
+	<div id='nav'>
+		<a href=''>H</a>
+		<a href='introduction/'>I</a>
+		<a href=''>M</a>
+		<a href=''>E</a>
+	</div>
+</body>
+</html>
