@@ -5,7 +5,7 @@ body{
 	background:linear-gradient(135deg,hsl(200,100%,76%) 0,hsl(200,100%,90%) 100%) fixed;
 }
 #warp{
-	width:896px;background:#FFF6;
+	width:896px;background:#FFF6;text-align:center;
 	margin:0 auto;padding:20px 40px 40px 40px;
 	box-shadow:2px 2px 5px #0004;
 	margin-bottom:20px;
@@ -13,7 +13,7 @@ body{
 h1{
 	border-bottom:4px solid #666;
 	padding-bottom:16px;
-	font-size:60px;text-align:center;
+	font-size:60px;
 }
 p{
 	font-size:36px;
@@ -36,4 +36,10 @@ p{
 }
 #nav:hover>a{
 	margin-bottom:20px;color:#333;
+}
+.box{
+	width:896px;background:#FFF6;
+	margin:0 auto;padding:40px;
+	box-shadow:2px 2px 5px #0004;
+	margin-bottom:20px;position:relative;
 }

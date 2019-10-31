@@ -6,13 +6,41 @@
 <link href='/css/main.css' rel='stylesheet' type='text/css'/>
 <style type='text/css'>
 #nav>a{color:#3330;margin-bottom:-60px;}
+#category{
+	position:fixed;top:80px;right:80px;
+	width:60px;height:60px;background:#FFF0;
+	transform:scale(1.5);transform-origin:0 0;
+}
+#category:hover{
+	height:300px;
+}
+#category>a{
+	display:block;background:#FFF3;
+	width:60px;height:60px;
+	text-align:center;line-height:60px;
+	text-decoration:none;border-radius:100%;
+	box-shadow:1px 1px 4px #0004;
+	transition:margin-bottom 0.8s,color 0.8s;
+	color:#3330;margin-bottom:-60px;
+}
+#category:hover>a{
+	margin-bottom:20px;color:#333;
+}
+#warp>p{display:block;border-bottom:2px dashed #666;}
+.span{
+	background:#FFF6;border-radius:15px;padding:10px 15px;
+	position:absolute;top:-50px;left:0;
+	box-shadow:2px 2px 5px #0004;
+}
+.group{
+	margin-top:70px;
+}
 </style>
 </head>
 <body>
 	<div id='warp'>
 		<h1>Cierramegumi's Website</h1>
-		<p>This is a normal website.</p>
-		<div id='img'></div>
+		<p>Select Pictures</p>
 	</div>
 	<div id='nav'>
 		<a href='/'>H</a>
@@ -20,5 +48,38 @@
 		<a href='/pictures/'>P</a>
 		<a href=''>E</a>
 	</div>
+	<div id='category'>
+		<a href='#p1'>S</a>
+		<a href='/introduction/'>F</a>
+		<a href='/pictures/'>3</a>
+		<a href=''>4</a>
+	</div>
+	<div class='group'>
+	<div class='box'><div class='span' id='p1'>Scenes</div><img src='/img/5.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/6.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/10.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/31.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/19.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/20.jpg' alt='error xD' width='900px' /></div>
+	<div class='box'><img src='/img/33.jpg' alt='error xD' width='900px' /></div>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
