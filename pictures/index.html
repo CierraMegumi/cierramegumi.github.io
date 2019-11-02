@@ -16,7 +16,7 @@
 }
 #category>a{
 	display:block;background:#FFF3;
-	width:60px;height:60px;
+	width:60px;height:60px;cursor:pointer;
 	text-align:center;line-height:60px;
 	text-decoration:none;border-radius:100%;
 	box-shadow:1px 1px 4px #0004;
@@ -32,8 +32,12 @@
 	position:absolute;top:-50px;left:0;
 	box-shadow:2px 2px 5px #0004;
 }
-.group{
+.box{
 	margin-top:70px;
+}
+.img{
+	width:900px;height:504px;background:#EEE center/cover;
+	cursor:pointer;
 }
 </style>
 </head>
@@ -49,21 +53,44 @@
 		<a href=''>E</a>
 	</div>
 	<div id='category'>
-		<a href='#p1'>S</a>
-		<a href='/introduction/'>F</a>
-		<a href='/pictures/'>3</a>
-		<a href=''>4</a>
+		<a>S</a>
+		<a>F</a>
+		<a>3</a>
+		<a>4</a>
 	</div>
-	<div class='group'>
-	<div class='box'><div class='span' id='p1'>Scenes</div><img src='/img/5.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/6.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/10.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/31.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/19.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/20.jpg' alt='error xD' width='900px' /></div>
-	<div class='box'><img src='/img/33.jpg' alt='error xD' width='900px' /></div>
-	</div>
+	<div class='box'><div class='span'>Scenes</div><div class='img'></div></div>
+	<div class='box'><div class='span'>Figures</div><div class='img'></div></div>
+	<div class='box'><div class='span'>Favourite</div><div class='img' style='height:1280px'></div></div>
 </body>
+<script src='/js/main.js'></script>
+<script>
+pList=[];
+pList[0]=[6,5,10,31,19,20,33,32,25];
+pList[1]=[7,8,9,11,12,13,14,15,16,17,18,21,22,23,24,26,27,28,29,30,36,37];
+pList[2]=[38,42,43,44,45,46,47,48,49,51];
+img=$$('img');
+for(let i=img.length;i--;){
+	img[i].group=i;
+	img[i].style.backgroundImage=`url(/img/${pList[i][0]}.jpg)`;
+	img[i].onclick=function(){
+		if(this.ind===undefined)this.ind=0;
+		this.ind++;this.ind%=pList[this.group].length;
+		this.style.backgroundImage=`url(/img/${pList[this.group][this.ind]}.jpg)`;
+	}
+}
+cg=$$$('a',$('category'));
+span=$$('span');
+for(let i=cg.length;i--;){
+	cg[i].ind=i;
+	cg[i].onclick=function(){
+		var p=span[this.ind].getBoundingClientRect();
+		window.scrollBy({
+			top:p.top-10,
+			behavior:'smooth'
+		})
+	}
+}
+</script>
 </html>
 
 
