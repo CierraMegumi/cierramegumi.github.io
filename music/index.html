@@ -6,28 +6,40 @@
 <link href='/css/main.css' rel='stylesheet' type='text/css'/>
 <style type='text/css'>
 #nav>a{color:#3330;margin-bottom:-60px;}
-#warp>p{color:#666;padding-bottom:4px;border-bottom:2px dashed #AAA;}
+#warp>p{color:#666;width:640px;padding-bottom:4px;border-bottom:2px dashed #AAA;margin:0 auto;}
 .circleBox{
-	position:relative;margin:10px auto;width:896px;height:980px;overflow:hidden;
-	text-align:center;margin-bottom:20px;line-height:896px;
+	position:absolute;left:50%;transform:translateX(-50%);width:896px;height:980px;overflow:hidden;
+	text-align:center;margin-bottom:20px;line-height:896px;opacity:0;z-index:-1;
 	color:#FFF;font-size:64px;text-shadow:0 0 4px #000,0 0 6px #000;
+	pointer-events:none;user-select:none;transition:opacity 0.7s;
 }
 .circle{
 	width:896px;height:896px;position:absolute;top:0;
-	border-radius:50%;margin-bottom:20px;
+	border-radius:50%;
 	background-size:cover;z-index:-1;
-	background-position:center;
+	background-position:center;pointer-events:auto;
 	animation:rotate 15s linear infinite;
 	animation-play-state:paused;
 }
+.circle:hover{cursor:pointer;}
 .circleBox audio{
-	position:absolute;top:910px;left:50%;transform:translateX(-50%);
+	position:absolute;top:910px;left:50%;transform:translateX(-50%);pointer-events:auto;
+	opacity:0.75;transition:opacity 0.2s;outline:none;
 }
+.circleBox audio:hover{opacity:1;}
 @keyframes rotate{
 	0%{transform:rotate(0deg);}
 	100%{transform:rotate(360deg);}
 }
 #warp{border-radius:300px;}
+#prev,#next{
+	position:absolute;left:50%;font-size:100px;width:100px;
+	z-index:1;top:720px;text-align:center;user-select:none;
+	opacity:0.5;transition:opacity 0.2s;
+}
+#prev:hover,#next:hover{opacity:1;}
+#prev{transform:translateX(-560px);}
+#next{transform:translateX(460px);}
 </style>
 </head>
 <body>
@@ -41,6 +53,8 @@
 		<a href='/pictures/'>P</a>
 		<a href=''>M</a>
 	</div>
+	<div id='prev'>◁</div>
+	<div id='next'>▷</div>
 </body>
 <script src='/js/main.js'></script>
 <script>
@@ -50,6 +64,7 @@ MUSIC=[
 ];
 MUSIC.forEach((o,i)=>{
 	var cb=document.createElement('div');
+	o.cb=cb;
 	cb.className='circleBox';cb.innerText=o.n;
 	var c=document.createElement('div');
 	c.className='circle';
@@ -73,5 +88,19 @@ MUSIC.forEach((o,i)=>{
 	cb.appendChild(c);cb.appendChild(au);
 	document.body.appendChild(cb);
 });
+ind=0;
+css(MUSIC[ind].cb,{opacity:1,zIndex:1});
+$('prev').onclick=function(){
+	MUSIC[ind].cb.children[1].pause();
+	css(MUSIC[ind].cb,{opacity:0,zIndex:-1});
+	ind--;if(ind<0)ind+=MUSIC.length;
+	css(MUSIC[ind].cb,{opacity:1,zIndex:1});
+}
+$('next').onclick=function(){
+	MUSIC[ind].cb.children[1].pause();
+	css(MUSIC[ind].cb,{opacity:0,zIndex:-1});
+	ind++;if(ind>=MUSIC.length)ind-=MUSIC.length;
+	css(MUSIC[ind].cb,{opacity:1,zIndex:1});
+}
 </script>
 </html>
