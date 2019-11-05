@@ -5,31 +5,27 @@
 <title>Cierramegumi</title>
 <link href='/css/main.css' rel='stylesheet' type='text/css'/>
 <style type='text/css'>
-#img{
-	width:896px;height:504px;
-	background-image:url(img/1.jpg),url(img/2.jpg),url(img/3.jpg);
-	background-size:cover;
-	background-repeat:no-repeat;
-	transition:background-position 0.8s;
-	animation:roll 15s infinite;
-}
-#img:hover{
-	background-position:-896px 0,0 0;
-}
-@keyframes roll{
-	0%{background-position:0 0,896px 0,1792px 0;}
-	28%{background-position:0 0,896px 0,1792px 0;}
-	33%{background-position:-896px 0,0 0,896px 0;}
-	61%{background-position:-896px 0,0 0,896px 0;}
-	66%{background-position:-1792px 0,-896px 0,0 0;}
-	95%{background-position:-1792px 0,-896px 0,0 0;}
-	100%{background-position:0 0,896px 0,1792px 0;}
-}
 #nav>a{color:#3330;margin-bottom:-60px;}
 #warp>p{color:#666;padding-bottom:4px;border-bottom:2px dashed #AAA;}
+.circleBox{
+	position:relative;margin:10px auto;width:896px;height:980px;overflow:hidden;
+	text-align:center;margin-bottom:20px;line-height:896px;
+	color:#FFF;font-size:64px;text-shadow:0 0 4px #000,0 0 6px #000;
+}
 .circle{
-	margin:10px auto;background:#AAA;width:896px;height:896px;
-	border-radius:50%;
+	width:896px;height:896px;position:absolute;top:0;
+	border-radius:50%;margin-bottom:20px;
+	background-size:cover;z-index:-1;
+	background-position:center;
+	animation:rotate 15s linear infinite;
+	animation-play-state:paused;
+}
+.circleBox audio{
+	position:absolute;top:910px;left:50%;transform:translateX(-50%);
+}
+@keyframes rotate{
+	0%{transform:rotate(0deg);}
+	100%{transform:rotate(360deg);}
 }
 #warp{border-radius:300px;}
 </style>
@@ -45,10 +41,37 @@
 		<a href='/pictures/'>P</a>
 		<a href=''>M</a>
 	</div>
-	<div class='circle'>
-	
-	</div>
 </body>
+<script src='/js/main.js'></script>
+<script>
+MUSIC=[
+{n:'幾年月',id:'480097786'},
+{n:'Shelter',id:'425280053'},
+];
+MUSIC.forEach((o,i)=>{
+	var cb=document.createElement('div');
+	cb.className='circleBox';cb.innerText=o.n;
+	var c=document.createElement('div');
+	c.className='circle';
+	c.style.backgroundImage=`url(/img/${53-i}.jpg)`;
+	c.onclick=function(){
+		if(this.nextSibling.paused){
+			this.nextSibling.play();
+		}else{
+			this.nextSibling.pause();
+		}
+	}
+	var au=document.createElement('audio');
+	au.controls='controls';
+	au.src=`https://music.163.com/song/media/outer/url?id=${o.id}.mp3`;
+	au.addEventListener('play',function(){
+		this.previousSibling.style.animationPlayState='running';
+	});
+	au.addEventListener('pause',function(){
+		this.previousSibling.style.animationPlayState='paused';
+	});
+	cb.appendChild(c);cb.appendChild(au);
+	document.body.appendChild(cb);
+});
+</script>
 </html>
-
-

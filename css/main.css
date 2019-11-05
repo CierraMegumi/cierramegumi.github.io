@@ -1,8 +1,8 @@
 html,body{
-	height:100%;
+	height:100%;min-width:1440px;
 }
 body{
-	background:linear-gradient(135deg,hsl(200,100%,76%) 0,hsl(200,100%,90%) 100%) fixed;
+	background:linear-gradient(135deg,hsl(200,100%,76%) 0,hsl(200,100%,90%) 100%) fixed;mix-blend-mode:lighten;
 }
 #warp{
 	width:896px;background:#FFF6;text-align:center;
