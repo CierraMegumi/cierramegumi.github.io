@@ -6,24 +6,15 @@
 <link href='css/main.css' rel='stylesheet' type='text/css'/>
 <style type='text/css'>
 #img{
-	width:896px;height:504px;
+	width:896px;height:504px;overflow:hidden;
+}
+#img>div{
+	width:3000px;height:504px;
 	background-image:url(img/1.jpg),url(img/2.jpg),url(img/3.jpg);
-	background-size:cover;
+	background-size:896px auto;
 	background-repeat:no-repeat;
-	transition:background-position 0.8s;
-	animation:roll 15s infinite;
-}
-#img:hover{
-	background-position:-896px 0,0 0;
-}
-@keyframes roll{
-	0%{background-position:0 0,896px 0,1792px 0;}
-	28%{background-position:0 0,896px 0,1792px 0;}
-	33%{background-position:-896px 0,0 0,896px 0;}
-	61%{background-position:-896px 0,0 0,896px 0;}
-	66%{background-position:-1792px 0,-896px 0,0 0;}
-	95%{background-position:-1792px 0,-896px 0,0 0;}
-	100%{background-position:0 0,896px 0,1792px 0;}
+	background-position:0 0,896px 0,1792px 0;
+	transition:transform 0.8s;
 }
 #nav>a{color:#3330;margin-bottom:-60px;}
 </style>
@@ -32,7 +23,7 @@
 	<div id='warp'>
 		<h1>Cierramegumi's Website</h1>
 		<p>This is a normal website.</p>
-		<div id='img'></div>
+		<div id='img'><div title='click to change'></div></div>
 	</div>
 	<div id='nav'>
 		<a href='/'>H</a>
@@ -41,4 +32,15 @@
 		<a href='/music/'>M</a>
 	</div>
 </body>
+<script src='/js/main.js'></script>
+<script>
+ind=0;
+$('img').onclick=function(){
+	ind++;if(ind>2)ind=0;
+	this.firstChild.style.transform=`translateX(-${ind*896}px)`;
+	clearTimeout(auto);
+	auto=setTimeout(`$('img').onclick()`,5000);
+}
+auto=setTimeout(`$('img').onclick()`,5000);
+</script>
 </html>

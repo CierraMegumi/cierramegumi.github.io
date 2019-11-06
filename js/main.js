@@ -2,7 +2,7 @@ function $(id){
 	return document.getElementById(id);
 }
 function $$(cls,o){
-	if(o===undefined)o=document;
+	o=o||document;
 	return o.getElementsByClassName(cls);
 }
 function $$$(tag,o){
